@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Triple Crown Financial Services</title>
+  <link rel="icon" type="image/svg+xml" href="logo-trees.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #0B1120;
+      --navy-bg: #1B2A4A;
+      --dark: #374151;
+      --gold: #C8A45E;
+      --brand-gold: #B8942E;
+      --teal: #3B9EA5;
+      --coral: #E07A5F;
+      --purple: #7C6FAE;
+      --white: #ffffff;
+      --off-white: #FAFAF8;
+      --cream: #F5F3EF;
+      --heading: 'Montserrat', sans-serif;
+      --sans: 'Plus Jakarta Sans', sans-serif;
+    }
+    body { font-family: var(--sans); color: var(--navy); font-size: 15px; line-height: 1.6; overflow-x: hidden; background: var(--off-white); }
+    a { color: inherit; text-decoration: none; }
+
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .top-banner { text-align: center; padding: 10px 20px; font-size: 14px; color: var(--dark); letter-spacing: 0.3px; background: var(--white); }
+    .top-banner a { color: var(--navy-bg); font-weight: 500; }
+    .top-banner a:hover { text-decoration: underline; }
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 60px; max-width: 1400px; margin: 0 auto; z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo svg { width: 38px; height: 38px; }
+    .nav-logo span { font-family: var(--heading); font-size: 20px; font-weight: 400; color: var(--brand-gold); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--dark); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    .page-hero {
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding: 40px 60px 40px;
+    }
+    .page-hero h1 {
+      font-family: var(--heading);
+      font-size: 34px;
+      font-weight: 300;
+      color: var(--navy);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .page-hero p { font-size: 15px; color: var(--dark); line-height: 1.7; max-width: 580px; }
+
+    .contact-content { max-width: 800px; margin: 0 auto; padding: 0 20px 60px; }
+
+    .calendly-placeholder {
+      margin: 40px auto;
+      padding: 40px 20px;
+      text-align: center;
+      background: var(--white);
+      border: 1px solid rgba(11,17,32,0.08);
+    }
+    .calendly-placeholder p { font-size: 15px; color: var(--dark); margin-bottom: 16px; }
+
+    .link-primary { color: var(--navy-bg); font-weight: 600; font-size: 15px; transition: opacity 0.2s; }
+    .link-primary:hover { opacity: 0.7; }
+
+    .contact-info { margin-top: 48px; text-align: center; }
+    .contact-info h2 { font-family: var(--heading); font-size: 28px; font-weight: 300; color: var(--navy); margin-bottom: 24px; }
+    .info-items { display: flex; flex-direction: column; gap: 18px; align-items: center; }
+    .info-item { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--dark); }
+    .info-icon { flex-shrink: 0; }
+    .info-icon svg { width: 24px; height: 24px; }
+    .info-item a { color: var(--gold); }
+
+    .cta-section { background: var(--navy-bg); text-align: center; padding: 80px 20px; }
+    .cta-section h2 { font-family: var(--heading); font-size: 32px; font-weight: 300; color: var(--gold); margin-bottom: 12px; }
+    .cta-section p { font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 24px; }
+    .cta-section .link-primary { color: var(--white); font-size: 16px; }
+
+    footer { background: var(--cream); padding: 40px 60px; }
+    .footer-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: start; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { font-size: 14px; color: var(--dark); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-center { text-align: center; }
+    .footer-center svg { width: 44px; height: 44px; }
+    .footer-center .footer-brand { font-family: var(--heading); font-size: 16px; font-weight: 400; color: var(--brand-gold); margin-top: 6px; }
+    .footer-tagline { font-size: 12px; color: var(--brand-gold); font-weight: 500; margin-top: 4px; letter-spacing: 0.5px; }
+    .footer-center .copyright { font-size: 12px; color: var(--dark); margin-top: 6px; }
+    .footer-right { text-align: right; }
+    .footer-right a { font-size: 14px; color: var(--navy-bg); }
+    .footer-right p { font-size: 12px; color: var(--dark); margin-top: 4px; }
+
+    /* Hamburger menu */
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy-bg); margin: 5px 0; transition: all 0.3s ease; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu-dropdown {
+      display: none;
+      background: var(--navy-bg);
+      padding: 12px 0;
+      text-align: center;
+    }
+    .mobile-menu-dropdown.open { display: block; }
+    .mobile-menu-dropdown a {
+      display: block;
+      color: var(--brand-gold);
+      font-size: 16px;
+      font-weight: 500;
+      padding: 14px 20px;
+      transition: opacity 0.2s;
+    }
+    .mobile-menu-dropdown a:hover { opacity: 0.8; }
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; justify-content: space-between; }
+      .nav-logo { gap: 10px; }
+      .nav-logo svg { width: 42px; height: 42px; }
+      .nav-logo span { font-size: 22px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .page-hero { padding: 30px 20px 30px; margin-top: 20px; }
+      .page-hero h1 { font-size: 28px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+      .footer-right { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-banner">
+    <a href="contact.html">Learn more by scheduling a call with us →</a>
+  </div>
+
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#B8942E">
+        <polygon points="15,80 33,48 51,80"/><polygon points="18,68 33,40 48,68"/><polygon points="21,56 33,32 45,56"/><polygon points="24,46 33,24 42,46"/><rect x="30" y="80" width="6" height="10"/>
+        <polygon points="30,84 50,38 70,84"/><polygon points="34,70 50,30 66,70"/><polygon points="37,58 50,22 63,58"/><polygon points="40,46 50,14 60,46"/><polygon points="43,36 50,8 57,36"/><rect x="47" y="84" width="6" height="10"/>
+        <polygon points="49,82 67,44 85,82"/><polygon points="52,68 67,36 82,68"/><polygon points="55,56 67,28 79,56"/><polygon points="58,46 67,20 76,46"/><rect x="64" y="82" width="6" height="10"/>
+      </svg>
+      <span>Triple Crown</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu-dropdown">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <section class="page-hero fade-up">
+    <h1>Contact us</h1>
+    <p>We'd love to hear from you. Schedule a call to discuss your needs, or reach out by email — we typically respond within one business day.</p>
+  </section>
+
+  <div class="contact-content">
+    <div class="calendly-placeholder fade-up">
+      <p>Pick a time that works for you</p>
+      <a href="contact.html" class="link-primary">Schedule a call with us →</a>
+      <!-- Calendly embed — uncomment when ready:
+      <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_LINK" style="min-width:320px;height:630px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      -->
+    </div>
+
+    <div class="contact-info fade-up">
+      <h2>Get in touch</h2>
+      <div class="info-items">
+        <div class="info-item">
+          <span class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3B9EA5" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="0"/><polyline points="2,4 12,13 22,4"/></svg>
+          </span>
+          <a href="mailto:hello@triplecrown.us">hello@triplecrown.us</a>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7C6FAE" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><ellipse cx="12" cy="12" rx="4" ry="10"/></svg>
+          </span>
+          <span>Serving individuals and businesses all over the world</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="cta-section fade-up">
+    <h2>We're here to help</h2>
+    <p>Whether you have a quick question or need a full financial review, we're ready when you are.</p>
+    <a href="mailto:hello@triplecrown.us" class="link-primary">Email us directly →</a>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="about.html">Company</a>
+        <a href="contact.html">Schedule a Call</a>
+      </div>
+      <div class="footer-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#B8942E">
+          <polygon points="15,80 33,48 51,80"/><polygon points="18,68 33,40 48,68"/><polygon points="21,56 33,32 45,56"/><polygon points="24,46 33,24 42,46"/><rect x="30" y="80" width="6" height="10"/>
+          <polygon points="30,84 50,38 70,84"/><polygon points="34,70 50,30 66,70"/><polygon points="37,58 50,22 63,58"/><polygon points="40,46 50,14 60,46"/><polygon points="43,36 50,8 57,36"/><rect x="47" y="84" width="6" height="10"/>
+          <polygon points="49,82 67,44 85,82"/><polygon points="52,68 67,36 82,68"/><polygon points="55,56 67,28 79,56"/><polygon points="58,46 67,20 76,46"/><rect x="64" y="82" width="6" height="10"/>
+        </svg>
+        <p class="footer-brand">Triple Crown</p>
+        <p class="footer-tagline">Tax. Bookkeeping. Advisory.</p>
+        <p class="copyright">© 2026 Triple Crown Financial Services</p>
+      </div>
+      <div class="footer-right">
+        <a href="mailto:hello@triplecrown.us">hello@triplecrown.us</a>
+        <p>Serving individuals and businesses all over the world</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() { document.querySelector('.hamburger').classList.toggle('active'); document.querySelector('.mobile-menu-dropdown').classList.toggle('open'); }
+    
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+  </script>
+</body>
+</html>
