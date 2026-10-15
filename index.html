@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triple Crown Financial Services</title>
+  <link rel="icon" type="image/svg+xml" href="logo-trees.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #0B1120;
+      --navy-bg: #1B2A4A;
+      --dark: #374151;
+      --gold: #C8A45E;
+      --brand-gold: #B8942E;
+      --teal: #3B9EA5;
+      --coral: #E07A5F;
+      --purple: #7C6FAE;
+      --white: #ffffff;
+      --off-white: #FAFAF8;
+      --cream: #F5F3EF;
+      --heading: 'Montserrat', sans-serif;
+      --sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--navy);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background: var(--off-white);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Top Banner */
+    .top-banner {
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: var(--dark);
+      letter-spacing: 0.3px;
+      background: var(--white);
+    }
+    .top-banner a { color: var(--navy); font-weight: 500; }
+    .top-banner a:hover { text-decoration: underline; }
+
+    /* Nav */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo svg { width: 38px; height: 38px; }
+    .nav-logo span {
+      font-family: var(--heading);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--brand-gold);
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--dark); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* Hero */
+    .hero {
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding: 40px 60px 80px;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    .hero-text { flex: 1; }
+    .hero-text h1 {
+      font-family: var(--heading);
+      font-size: 34px;
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 22px;
+    }
+    .hero-text p {
+      font-size: 15px;
+      color: var(--dark);
+      margin-bottom: 28px;
+      line-height: 1.7;
+      max-width: 440px;
+    }
+    .hero-links { display: flex; gap: 24px; align-items: center; }
+    .link-primary { color: var(--navy-bg); font-weight: 600; font-size: 15px; transition: opacity 0.2s; }
+    .link-primary:hover { opacity: 0.7; }
+    .link-secondary {
+      color: var(--dark);
+      font-size: 15px;
+      font-weight: 500;
+      border-bottom: 1px solid var(--dark);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+    .link-secondary:hover { color: var(--gold); border-color: var(--gold); }
+    .hero-graphic { flex: 1; display: flex; justify-content: center; align-items: center; }
+
+    /* Service Strip */
+    .service-strip-wrap { background: var(--white); }
+    .service-strip {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      padding: 70px 20px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .service-item {
+      text-align: left;
+      position: relative;
+      padding: 16px 20px;
+      border-left: 3px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .service-item.tax-item { border-left-color: var(--coral); }
+    .service-item.book-item { border-left-color: var(--teal); }
+    .service-item.consult-item { border-left-color: var(--purple); }
+    .service-item h3 {
+      font-family: var(--heading);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 4px;
+      display: inline-block;
+      position: relative;
+    }
+    .service-item h3::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .service-item:hover h3::after { width: 100%; }
+    .service-item p { font-size: 13px; color: var(--dark); line-height: 1.5; }
+
+    /* Feature Sections */
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 60px;
+    }
+    .feature.reverse { flex-direction: row-reverse; }
+    .feature-text { flex: 1; }
+    .feature-text h2 {
+      font-family: var(--heading);
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .feature-text p { font-size: 15px; color: var(--dark); line-height: 1.7; }
+    .feature-graphic { flex: 1; display: flex; justify-content: center; }
+    .feature-bg-white { background: var(--white); }
+    .feature-bg-off { background: var(--off-white); }
+
+    /* How It Works */
+    .how-it-works { background: var(--navy-bg); padding: 80px 60px; }
+    .how-it-works-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .how-it-works h2 {
+      font-family: var(--heading);
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--gold);
+      margin-bottom: 48px;
+    }
+    .steps { display: flex; justify-content: center; gap: 60px; align-items: flex-start; }
+    .step { flex: 1; max-width: 280px; text-align: center; }
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--heading);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--gold);
+      margin: 0 auto 16px;
+    }
+    .step h3 { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .step p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .step-arrow { color: var(--gold); font-size: 24px; margin-top: 20px; flex-shrink: 0; }
+
+    /* Advantages */
+    .advantages {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 60px;
+    }
+    .advantages h2 {
+      font-family: var(--heading);
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .adv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 80px; }
+    .adv-item { display: flex; gap: 16px; align-items: flex-start; }
+    .adv-icon { flex-shrink: 0; margin-top: 2px; }
+    .adv-icon svg { width: 28px; height: 28px; }
+    .adv-item h4 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+    .adv-item p { font-size: 14px; color: var(--dark); line-height: 1.6; }
+
+    /* Stat Banner */
+    .stat-banner {
+      background: var(--navy-bg);
+      text-align: center;
+      padding: 28px 20px;
+    }
+    .stat-banner p {
+      font-family: var(--heading);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+
+    /* FAQ */
+    .faq { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .faq h2 {
+      font-family: var(--heading);
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .faq-item { border-bottom: 1px solid rgba(11,17,32,0.1); padding: 16px 0; }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .faq-q::after { content: '+'; font-size: 18px; font-weight: 400; color: var(--gold); transition: transform 0.2s; }
+    .faq-item.open .faq-q::after { content: '−'; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 14px; color: var(--dark); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 300px; padding-top: 10px; }
+
+    /* CTA */
+    .cta-section { background: var(--navy-bg); text-align: center; padding: 80px 20px; }
+    .cta-section h2 {
+      font-family: var(--heading);
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .cta-section p { font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 24px; }
+    .cta-section .link-primary { color: var(--white); font-size: 16px; }
+
+    /* Footer */
+    footer { background: var(--cream); padding: 40px 60px; }
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: start;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 14px; padding-left: 40px; }
+    .footer-links a { font-size: 14px; color: var(--dark); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-center { text-align: center; padding-top: 0; }
+    .footer-center svg { width: 44px; height: 44px; }
+    .footer-center .footer-brand {
+      font-family: var(--heading);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--brand-gold);
+      margin-top: 6px;
+    }
+    .footer-tagline { font-size: 12px; color: var(--brand-gold); font-weight: 500; margin-top: 4px; letter-spacing: 0.5px; }
+    .footer-center .copyright { font-size: 12px; color: var(--dark); margin-top: 6px; }
+    .footer-right { text-align: right; padding-right: 40px; }
+    .footer-right a { font-size: 14px; color: var(--navy-bg); }
+    .footer-right p { font-size: 12px; color: var(--dark); margin-top: 4px; }
+
+    /* Hamburger menu */
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy-bg); margin: 5px 0; transition: all 0.3s ease; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu-dropdown {
+      display: none;
+      background: var(--navy-bg);
+      padding: 12px 0;
+      text-align: center;
+    }
+    .mobile-menu-dropdown.open { display: block; }
+    .mobile-menu-dropdown a {
+      display: block;
+      color: var(--brand-gold);
+      font-size: 16px;
+      font-weight: 500;
+      padding: 14px 20px;
+      transition: opacity 0.2s;
+    }
+    .mobile-menu-dropdown a:hover { opacity: 0.8; }
+    .mobile-overlay { display: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; justify-content: space-between; }
+      .nav-logo { gap: 10px; }
+      .nav-logo svg { width: 42px; height: 42px; }
+      .nav-logo span { font-size: 22px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+
+      .hero { flex-direction: column; padding: 30px 20px 40px; margin-top: 20px; gap: 40px; }
+      .hero-text { text-align: center; }
+      .hero-text p { max-width: 100%; }
+      .hero-links { justify-content: center; }
+      .hero-graphic { width: 100%; overflow: hidden; }
+      .hero-graphic svg { width: 100%; height: auto; max-width: 100%; }
+      .service-strip { gap: 40px; flex-wrap: wrap; padding: 40px 20px; }
+      .feature { flex-direction: column !important; padding: 40px 20px; gap: 30px; }
+      .feature-graphic { width: 100%; overflow: hidden; }
+      .feature-graphic svg { width: 100%; height: auto; max-width: 100%; }
+      .steps { flex-direction: column; gap: 32px; align-items: center; }
+      .step-arrow { display: none; }
+      .how-it-works { padding: 60px 20px; }
+      .adv-grid { grid-template-columns: 1fr; }
+      .advantages { padding: 60px 20px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+      .footer-links { padding-left: 0; align-items: center; }
+      .footer-right { text-align: center; padding-right: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Banner -->
+  <div class="top-banner">
+    <a href="contact.html">Learn more by scheduling a call with us →</a>
+  </div>
+
+  <!-- Nav -->
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#B8942E">
+        <polygon points="15,80 33,48 51,80"/><polygon points="18,68 33,40 48,68"/><polygon points="21,56 33,32 45,56"/><polygon points="24,46 33,24 42,46"/><rect x="30" y="80" width="6" height="10"/>
+        <polygon points="30,84 50,38 70,84"/><polygon points="34,70 50,30 66,70"/><polygon points="37,58 50,22 63,58"/><polygon points="40,46 50,14 60,46"/><polygon points="43,36 50,8 57,36"/><rect x="47" y="84" width="6" height="10"/>
+        <polygon points="49,82 67,44 85,82"/><polygon points="52,68 67,36 82,68"/><polygon points="55,56 67,28 79,56"/><polygon points="58,46 67,20 76,46"/><rect x="64" y="82" width="6" height="10"/>
+      </svg>
+      <span>Triple Crown</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu-dropdown">
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Financial clarity for individuals and growing businesses</h1>
+      <p style="margin-bottom:32px;">Tax preparation, bookkeeping, and advisory services tailored to individuals, entrepreneurs, and small businesses.</p>
+
+      <!-- 2x2 icon grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 48px;margin:0 0 20px;max-width:420px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <svg viewBox="0 0 28 28" width="24" height="24" fill="none" stroke="#C8A45E" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><polyline points="14,8 14,14 19,17"/></svg>
+          <span style="font-size:14px;font-weight:600;color:var(--navy);">Save time</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <svg viewBox="0 0 28 28" width="24" height="24" fill="none" stroke="#3B9EA5" stroke-width="1.5"><circle cx="14" cy="14" r="4"/><circle cx="14" cy="14" r="8"/><circle cx="14" cy="14" r="12"/><circle cx="14" cy="14" r="2" fill="#3B9EA5"/></svg>
+          <span style="font-size:14px;font-weight:600;color:var(--navy);">Trusted accuracy</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <svg viewBox="0 0 28 28" width="24" height="24" fill="none" stroke="#E07A5F" stroke-width="1.5"><path d="M7,18 C7,14 10,12 14,12 C18,12 21,14 21,18"/><circle cx="14" cy="8" r="4"/></svg>
+          <span style="font-size:14px;font-weight:600;color:var(--navy);">A real partner</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <svg viewBox="0 0 28 28" width="24" height="24" fill="none" stroke="#7C6FAE" stroke-width="1.5"><polyline points="4,22 10,14 16,18 24,6"/><polyline points="18,6 24,6 24,12"/></svg>
+          <span style="font-size:14px;font-weight:600;color:var(--navy);">Growth-focused</span>
+        </div>
+      </div>
+
+      <div class="hero-links" style="margin-top:48px;gap:40px;">
+        <a href="contact.html" class="link-primary">Schedule a call with us →</a>
+        <a href="services.html" class="link-secondary">View Services</a>
+      </div>
+    </div>
+    <div class="hero-graphic">
+      <!-- Person at desk with laptop and floating notification cards -->
+      <svg width="480" height="340" viewBox="0 0 480 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Desk -->
+        <rect x="60" y="230" width="360" height="8" fill="#C8A45E"/>
+        <rect x="80" y="238" width="8" height="60" fill="#C8A45E"/>
+        <rect x="392" y="238" width="8" height="60" fill="#C8A45E"/>
+        <!-- Laptop on desk -->
+        <rect x="150" y="160" width="180" height="120" fill="#1B2A4A" rx="0"/>
+        <rect x="158" y="168" width="164" height="96" fill="#F8F8F6"/>
+        <!-- Laptop screen content - mini dashboard -->
+        <rect x="166" y="176" width="60" height="6" fill="#C8A45E"/>
+        <rect x="166" y="188" width="148" height="1" fill="#E8E6E0"/>
+        <rect x="166" y="196" width="40" height="24" fill="#3B9EA5" opacity="0.2"/>
+        <rect x="166" y="196" width="40" height="16" fill="#3B9EA5" opacity="0.4"/>
+        <rect x="212" y="196" width="40" height="24" fill="#C8A45E" opacity="0.2"/>
+        <rect x="212" y="196" width="40" height="20" fill="#C8A45E" opacity="0.4"/>
+        <rect x="258" y="196" width="40" height="24" fill="#7C6FAE" opacity="0.2"/>
+        <rect x="258" y="196" width="40" height="10" fill="#7C6FAE" opacity="0.4"/>
+        <rect x="166" y="228" width="100" height="4" fill="#E8E6E0"/>
+        <rect x="166" y="236" width="70" height="4" fill="#E8E6E0"/>
+        <!-- Laptop base -->
+        <path d="M130 280 L350 280 L360 290 L120 290 Z" fill="#1B2A4A"/>
+        <!-- Person sitting (silhouette) -->
+        <circle cx="110" cy="140" r="22" fill="#1B2A4A"/>
+        <!-- Body -->
+        <rect x="96" y="162" width="28" height="40" fill="#1B2A4A" rx="0"/>
+        <!-- Arms reaching to laptop -->
+        <rect x="116" y="180" width="40" height="8" fill="#1B2A4A" rx="0"/>
+        <rect x="70" y="180" width="30" height="8" fill="#1B2A4A" rx="0"/>
+        <!-- Legs -->
+        <rect x="96" y="202" width="12" height="36" fill="#1B2A4A" rx="0"/>
+        <rect x="112" y="202" width="12" height="36" fill="#1B2A4A" rx="0"/>
+        <!-- Chair -->
+        <rect x="80" y="198" width="50" height="6" fill="#C8A45E"/>
+        <rect x="78" y="160" width="6" height="44" fill="#C8A45E"/>
+        <rect x="102" y="240" width="6" height="20" fill="#374151"/>
+
+        <!-- Floating card 1 - top right -->
+        <g transform="translate(340, 40)">
+          <rect width="130" height="52" fill="white" stroke="#E8E6E0" stroke-width="1"/>
+          <rect width="3" height="52" fill="#3B9EA5"/>
+          <text x="14" y="20" fill="#1B2A4A" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600">Q3 financials reconciled ✓</text>
+          <text x="14" y="36" fill="#374151" font-family="Plus Jakarta Sans, sans-serif" font-size="8">All accounts balanced</text>
+          <circle cx="115" cy="16" r="4" fill="#3B9EA5"/>
+        </g>
+        <!-- Floating card 2 - pie chart -->
+        <g transform="translate(360, 110)">
+          <rect width="100" height="70" fill="white" stroke="#E8E6E0" stroke-width="1"/>
+          <!-- Mini pie chart -->
+          <circle cx="50" cy="32" r="18" fill="#E8E6E0"/>
+          <path d="M50,32 L50,14 A18,18 0 0,1 65,43 Z" fill="#C8A45E"/>
+          <path d="M50,32 L65,43 A18,18 0 0,1 35,46 Z" fill="#1B2A4A"/>
+          <text x="14" y="62" fill="#374151" font-family="Plus Jakarta Sans, sans-serif" font-size="8">Revenue split</text>
+        </g>
+        <!-- Floating card 3 - document icon -->
+        <g transform="translate(20, 60)">
+          <rect width="80" height="60" fill="white" stroke="#E8E6E0" stroke-width="1"/>
+          <rect x="16" y="12" width="28" height="36" fill="#1B2A4A"/>
+          <rect x="20" y="18" width="20" height="2" fill="#C8A45E"/>
+          <rect x="20" y="24" width="16" height="2" fill="#C8A45E"/>
+          <rect x="20" y="30" width="18" height="2" fill="#C8A45E"/>
+          <text x="52" y="28" fill="#1B2A4A" font-family="Plus Jakarta Sans, sans-serif" font-size="7" font-weight="600">2025</text>
+          <text x="52" y="38" fill="#374151" font-family="Plus Jakarta Sans, sans-serif" font-size="7">Tax</text>
+          <circle cx="62" cy="46" r="4" fill="#E07A5F"/>
+        </g>
+        <!-- Small accent dot -->
+        <circle cx="340" cy="200" r="4" fill="#7C6FAE" opacity="0.6"/>
+        <circle cx="440" cy="180" r="3" fill="#E07A5F" opacity="0.5"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Service Strip -->
+  <div class="service-strip-wrap">
+    <section class="service-strip fade-up">
+      <a href="services.html" class="service-item tax-item" style="text-decoration:none;">
+        <h3>Tax</h3>
+        <p>Preparation, planning &amp; compliance</p>
+      </a>
+      <a href="services.html" class="service-item book-item" style="text-decoration:none;">
+        <h3>Bookkeeping</h3>
+        <p>Monthly reconciliation &amp; reporting</p>
+      </a>
+      <a href="services.html" class="service-item consult-item" style="text-decoration:none;">
+        <h3>Advisory</h3>
+        <p>Strategic guidance for growth</p>
+      </a>
+    </section>
+  </div>
+
+  <!-- Feature 1: Personalized Support -->
+  <div class="feature-bg-off">
+    <section class="feature fade-up">
+      <div class="feature-text">
+        <h2>Personalized support</h2>
+        <p>No generic templates or one-size-fits-all solutions. We learn your business, understand your goals, and build a financial strategy that works specifically for you. Your dedicated team is always a message away.</p>
+      </div>
+      <div class="feature-graphic">
+        <!-- Person reviewing tablet with checklist and bar chart -->
+        <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Person -->
+          <circle cx="120" cy="80" r="24" fill="#1B2A4A"/>
+          <rect x="104" y="104" width="32" height="50" fill="#1B2A4A"/>
+          <!-- Arms -->
+          <rect x="130" y="116" width="50" height="8" fill="#1B2A4A"/>
+          <rect x="76" y="120" width="32" height="8" fill="#1B2A4A"/>
+          <!-- Legs -->
+          <rect x="104" y="154" width="14" height="46" fill="#1B2A4A"/>
+          <rect x="120" y="154" width="14" height="46" fill="#1B2A4A"/>
+          <!-- Tablet in hands -->
+          <rect x="168" y="100" width="70" height="50" fill="#1B2A4A"/>
+          <rect x="172" y="104" width="62" height="42" fill="white"/>
+          <rect x="178" y="110" width="30" height="3" fill="#C8A45E"/>
+          <rect x="178" y="118" width="50" height="2" fill="#E8E6E0"/>
+          <rect x="178" y="124" width="45" height="2" fill="#E8E6E0"/>
+          <rect x="178" y="130" width="40" height="2" fill="#E8E6E0"/>
+
+          <!-- Floating checklist -->
+          <g transform="translate(260, 50)">
+            <rect width="120" height="100" fill="white" stroke="#E8E6E0" stroke-width="1"/>
+            <text x="12" y="20" fill="#1B2A4A" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600">Checklist</text>
+            <rect x="12" y="30" width="10" height="10" fill="none" stroke="#3B9EA5" stroke-width="1.5"/>
+            <polyline points="14,36 17,39 21,33" stroke="#3B9EA5" stroke-width="1.5" fill="none"/>
+            <text x="28" y="39" fill="#374151" font-family="Plus Jakarta Sans, sans-serif" font-size="8">P&amp;L reviewed</text>
+            <rect x="12" y="48" width="10" height="10" fill="none" stroke="#3B9EA5" stroke-width="1.5"/>
+            <polyline points="14,54 17,57 21,51" stroke="#3B9EA5" stroke-width="1.5" fill="none"/>
+            <text x="28" y="57" fill="#374151" font-family="Plus Jakarta Sans, sans-serif" font-size="8">Accounts balanced</text>
+            <rect x="12" y="66" width="10" height="10" fill="none" stroke="#C8A45E" stroke-width="1.5"/>
+            <text x="28" y="75" fill="#374151" font-family="Plus Jakarta Sans, sans-serif" font-size="8">Tax estimate due</text>
+            <rect x="12" y="84" width="10" height="10" fill="none" stroke="#C8A45E" stroke-width="1.5"/>
+            <text x="28" y="93" fill="#374151" font-family="Plus Jakarta Sans, sans-serif" font-size="8">Client meeting</text>
+          </g>
+
+          <!-- Floating bar chart -->
+          <g transform="translate(270, 180)">
+            <rect width="100" height="80" fill="white" stroke="#E8E6E0" stroke-width="1"/>
+            <text x="10" y="16" fill="#1B2A4A" font-family="Plus Jakarta Sans, sans-serif" font-size="8" font-weight="600">Revenue</text>
+            <rect x="14" y="56" width="14" height="14" fill="#3B9EA5" opacity="0.6"/>
+            <rect x="34" y="42" width="14" height="28" fill="#3B9EA5" opacity="0.7"/>
+            <rect x="54" y="30" width="14" height="40" fill="#C8A45E"/>
+            <rect x="74" y="24" width="14" height="46" fill="#C8A45E"/>
+          </g>
+
+          <!-- Color accent dots -->
+          <circle cx="250" cy="170" r="4" fill="#7C6FAE" opacity="0.5"/>
+          <circle cx="100" cy="220" r="3" fill="#E07A5F" opacity="0.5"/>
+        </svg>
+      </div>
+    </section>
+  </div>
+
+  <!-- Feature 2: Tax & Compliance -->
+  <div class="feature-bg-white">
+    <section class="feature reverse fade-up">
+      <div class="feature-text">
+        <h2>Tax &amp; compliance</h2>
+        <p>Stay ahead of deadlines and maximize your deductions. We handle federal, state, and local filings with precision — so you never worry about penalties or missed opportunities.</p>
+      </div>
+      <div class="feature-graphic">
+        <!-- Person handing off folder with calendar and shield -->
+        <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Person 1 (handing) -->
+          <circle cx="100" cy="90" r="22" fill="#1B2A4A"/>
+          <rect x="86" y="112" width="28" height="46" fill="#1B2A4A"/>
+          <rect x="110" y="122" width="55" height="8" fill="#1B2A4A"/>
+          <rect x="72" y="126" width="18" height="8" fill="#1B2A4A"/>
+          <rect x="86" y="158" width="12" height="42" fill="#1B2A4A"/>
+          <rect x="102" y="158" width="12" height="42" fill="#1B2A4A"/>
+
+          <!-- Folder being handed -->
+          <g transform="translate(155, 112)">
+            <rect width="50" height="38" fill="#C8A45E"/>
+            <rect x="4" y="6" width="42" height="28" fill="white"/>
+            <rect x="10" y="12" width="30" height="2" fill="#E8E6E0"/>
+            <rect x="10" y="18" width="24" height="2" fill="#E8E6E0"/>
+            <rect x="10" y="24" width="28" height="2" fill="#E8E6E0"/>
+            <rect x="0" y="-6" width="26" height="10" fill="#C8A45E"/>
+          </g>
+
+          <!-- Person 2 (receiving) - implied by hand -->
+          <rect x="200" y="122" width="30" height="8" fill="#1B2A4A"/>
+
+          <!-- Calendar card -->
+          <g transform="translate(260, 40)">
+            <rect width="110" height="90" fill="white" stroke="#E8E6E0" stroke-width="1"/>
+            <rect width="110" height="20" fill="#E07A5F"/>
+            <text x="55" y="14" text-anchor="middle" fill="white" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600">APRIL</text>
+            <text x="55" y="62" text-anchor="middle" fill="#1B2A4A" font-family="Montserrat, sans-serif" font-size="28" font-weight="300">15</text>
+            <text x="55" y="80" text-anchor="middle" fill="#374151" font-family="Plus Jakarta Sans, sans-serif" font-size="8">Tax deadline</text>
+          </g>
+
+          <!-- Shield with checkmark -->
+          <g transform="translate(280, 160)">
+            <path d="M40,10 L70,24 L70,52 C70,72 56,86 40,92 C24,86 10,72 10,52 L10,24 Z" fill="none" stroke="#3B9EA5" stroke-width="2"/>
+            <path d="M40,10 L70,24 L70,52 C70,72 56,86 40,92 C24,86 10,72 10,52 L10,24 Z" fill="#3B9EA5" opacity="0.1"/>
+            <polyline points="28,50 37,60 54,40" stroke="#3B9EA5" stroke-width="3" fill="none"/>
+          </g>
+
+          <!-- Accent dots -->
+          <circle cx="240" cy="200" r="4" fill="#7C6FAE" opacity="0.5"/>
+          <circle cx="60" cy="60" r="3" fill="#C8A45E" opacity="0.5"/>
+        </svg>
+      </div>
+    </section>
+  </div>
+
+  <!-- Feature 3: Financial Reporting -->
+  <div class="feature-bg-off">
+    <section class="feature fade-up">
+      <div class="feature-text">
+        <h2>Financial reporting</h2>
+        <p>Clear, concise reports that give you a real picture of your business health. Monthly statements, cash flow analysis, and insights you can actually act on — delivered on time, every time.</p>
+      </div>
+      <div class="feature-graphic">
+        <!-- Person pointing at dashboard with line graphs -->
+        <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Dashboard screen -->
+          <rect x="140" y="30" width="230" height="170" fill="#1B2A4A"/>
+          <rect x="148" y="38" width="214" height="154" fill="#F8F8F6"/>
+          <!-- Dashboard header -->
+          <rect x="148" y="38" width="214" height="22" fill="#1B2A4A"/>
+          <text x="255" y="53" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Plus Jakarta Sans, sans-serif" font-size="8">Monthly Report</text>
+          <!-- Line graph -->
+          <polyline points="164,140 188,130 212,120 236,100 260,110 284,88 308,76 332,68" stroke="#C8A45E" stroke-width="2" fill="none"/>
+          <polyline points="164,148 188,142 212,138 236,130 260,134 284,124 308,118 332,110" stroke="#3B9EA5" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
+          <!-- Axis lines -->
+          <line x1="160" y1="156" x2="340" y2="156" stroke="#E8E6E0" stroke-width="1"/>
+          <line x1="160" y1="68" x2="160" y2="156" stroke="#E8E6E0" stroke-width="1"/>
+          <!-- Dollar sign -->
+          <g transform="translate(160, 68)">
+            <circle cx="10" cy="10" r="14" fill="#C8A45E" opacity="0.15"/>
+            <text x="10" y="15" text-anchor="middle" fill="#C8A45E" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">$</text>
+          </g>
+          <!-- Monitor stand -->
+          <rect x="235" y="200" width="40" height="8" fill="#1B2A4A"/>
+          <rect x="215" y="208" width="80" height="4" fill="#1B2A4A"/>
+
+          <!-- Person pointing -->
+          <circle cx="80" cy="100" r="24" fill="#1B2A4A"/>
+          <rect x="64" y="124" width="32" height="50" fill="#1B2A4A"/>
+          <!-- Pointing arm -->
+          <rect x="92" y="134" width="60" height="8" fill="#1B2A4A"/>
+          <!-- Other arm -->
+          <rect x="46" y="140" width="22" height="8" fill="#1B2A4A"/>
+          <!-- Legs -->
+          <rect x="64" y="174" width="14" height="46" fill="#1B2A4A"/>
+          <rect x="80" y="174" width="14" height="46" fill="#1B2A4A"/>
+
+          <!-- Document card floating -->
+          <g transform="translate(20, 30)">
+            <rect width="90" height="60" fill="white" stroke="#E8E6E0" stroke-width="1"/>
+            <rect width="3" height="60" fill="#7C6FAE"/>
+            <text x="14" y="18" fill="#1B2A4A" font-family="Plus Jakarta Sans, sans-serif" font-size="8" font-weight="600">Monthly Report</text>
+            <rect x="14" y="26" width="60" height="2" fill="#E8E6E0"/>
+            <rect x="14" y="32" width="50" height="2" fill="#E8E6E0"/>
+            <rect x="14" y="38" width="55" height="2" fill="#E8E6E0"/>
+            <text x="14" y="52" fill="#3B9EA5" font-family="Plus Jakarta Sans, sans-serif" font-size="7">Ready to review ✓</text>
+          </g>
+
+          <!-- Accent dots -->
+          <circle cx="380" cy="220" r="4" fill="#E07A5F" opacity="0.5"/>
+          <circle cx="130" cy="260" r="3" fill="#7C6FAE" opacity="0.5"/>
+        </svg>
+      </div>
+    </section>
+  </div>
+
+  <!-- How It Works -->
+  <section class="how-it-works fade-up">
+    <div class="how-it-works-inner">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Schedule a call</h3>
+          <p>Tell us about your business and financial needs. We'll listen and ask the right questions.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>We build your plan</h3>
+          <p>We design a custom service package — bookkeeping, tax, advisory, or all three.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Focus on your business</h3>
+          <p>We handle the numbers. You get clear reports, timely filings, and peace of mind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advantages -->
+  <section class="advantages fade-up" style="background: var(--white);">
+    <h2>Why our clients choose us</h2>
+    <div class="adv-grid">
+      <div class="adv-item">
+        <div class="adv-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="#C8A45E" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><polyline points="14,8 14,14 19,17"/></svg>
+        </div>
+        <div>
+          <h4>Save time</h4>
+          <p>Stop wrestling with spreadsheets. We take bookkeeping and tax prep off your plate entirely.</p>
+        </div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="#3B9EA5" stroke-width="1.5"><circle cx="14" cy="14" r="4"/><circle cx="14" cy="14" r="8"/><circle cx="14" cy="14" r="12"/><circle cx="14" cy="14" r="2" fill="#3B9EA5"/></svg>
+        </div>
+        <div>
+          <h4>Trusted accuracy</h4>
+          <p>Every number is reviewed, reconciled, and double-checked before it reaches you.</p>
+        </div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="#E07A5F" stroke-width="1.5"><path d="M7,18 C7,14 10,12 14,12 C18,12 21,14 21,18"/><circle cx="14" cy="8" r="4"/></svg>
+        </div>
+        <div>
+          <h4>A real partner</h4>
+          <p>We're not a faceless firm. You get a dedicated team that knows your business inside and out.</p>
+        </div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="#7C6FAE" stroke-width="1.5"><polyline points="4,22 10,14 16,18 24,6"/><polyline points="18,6 24,6 24,12"/></svg>
+        </div>
+        <div>
+          <h4>Growth-focused</h4>
+          <p>Beyond compliance — we help you make smarter financial decisions as you scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stat Banner -->
+  <section class="stat-banner fade-up">
+    <p>Trusted by individuals and businesses internationally</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq fade-up" style="padding-top: 60px;">
+    <h2>Common questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What kind of clients does Triple Crown serve?</div>
+      <div class="faq-a">We specialize in tax and bookkeeping for all types of clients and cases — individuals, solopreneurs, small businesses, and growing companies across every industry. We can help you set up a financial system that will streamline your operations and simplify your tax season, whatever your situation looks like.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What kind of compliance issues can I face?</div>
+      <div class="faq-a">Tax and compliance requirements vary depending on your state, entity type, and situation. You'll typically need to file state and federal taxes along with any applicable compliance fees, and missing a deadline or filing incorrectly can lead to fines or added complexity — so it's important to file accurately and on time, which is exactly what we help you do.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why do I need bookkeeping in the first place?</div>
+      <div class="faq-a">Keeping accurate books matters for any individual or business. It's impossible to file accurate tax and compliance documents without first capturing your transactions, so making sure your books are accurate and up to date is crucial no matter your situation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I have to sign a monthly contract with Triple Crown?</div>
+      <div class="faq-a">No! We offer monthly subscriptions and one-time tax service depending on what you need!</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I talk to someone before I buy?</div>
+      <div class="faq-a">Absolutely! To schedule an appointment, <a href="contact.html" style="color: var(--navy); font-weight: 600; text-decoration: underline;">click here</a>!</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section fade-up">
+    <h2>Ready to get started?</h2>
+    <p>Let's talk about how we can simplify your finances and help your business grow.</p>
+    <a href="contact.html" class="link-primary">Schedule a call with us →</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="about.html">Company</a>
+        <a href="contact.html">Schedule a Call</a>
+      </div>
+      <div class="footer-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#B8942E">
+          <polygon points="15,80 33,48 51,80"/><polygon points="18,68 33,40 48,68"/><polygon points="21,56 33,32 45,56"/><polygon points="24,46 33,24 42,46"/><rect x="30" y="80" width="6" height="10"/>
+          <polygon points="30,84 50,38 70,84"/><polygon points="34,70 50,30 66,70"/><polygon points="37,58 50,22 63,58"/><polygon points="40,46 50,14 60,46"/><polygon points="43,36 50,8 57,36"/><rect x="47" y="84" width="6" height="10"/>
+          <polygon points="49,82 67,44 85,82"/><polygon points="52,68 67,36 82,68"/><polygon points="55,56 67,28 79,56"/><polygon points="58,46 67,20 76,46"/><rect x="64" y="82" width="6" height="10"/>
+        </svg>
+        <p class="footer-brand">Triple Crown</p>
+        <p class="footer-tagline">Tax. Bookkeeping. Advisory.</p>
+        <p class="copyright">© 2026 Triple Crown Financial Services</p>
+      </div>
+      <div class="footer-right">
+        <a href="mailto:hello@triplecrown.us">hello@triplecrown.us</a>
+        <p>Serving individuals and businesses all over the world</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      document.querySelector('.hamburger').classList.toggle('active');
+      document.querySelector('.mobile-menu-dropdown').classList.toggle('open');
+    }
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+  </script>
+</body>
+</html>

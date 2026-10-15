@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#B8942E">
+  <!-- Left tree (shorter) -->
+  <!-- Layer 1 (bottom) -->
+  <polygon points="15,80 33,48 51,80"/>
+  <!-- Layer 2 (middle) -->
+  <polygon points="18,68 33,40 48,68"/>
+  <!-- Layer 3 (top) -->
+  <polygon points="21,56 33,32 45,56"/>
+  <!-- Layer 4 (peak) -->
+  <polygon points="24,46 33,24 42,46"/>
+  <!-- Trunk -->
+  <rect x="30" y="80" width="6" height="10" rx="1"/>
+
+  <!-- Center tree (tallest) -->
+  <!-- Layer 1 (bottom) -->
+  <polygon points="30,84 50,38 70,84"/>
+  <!-- Layer 2 (middle) -->
+  <polygon points="34,70 50,30 66,70"/>
+  <!-- Layer 3 (upper) -->
+  <polygon points="37,58 50,22 63,58"/>
+  <!-- Layer 4 (top) -->
+  <polygon points="40,46 50,14 60,46"/>
+  <!-- Layer 5 (peak) -->
+  <polygon points="43,36 50,8 57,36"/>
+  <!-- Trunk -->
+  <rect x="47" y="84" width="6" height="10" rx="1"/>
+
+  <!-- Right tree (medium) -->
+  <!-- Layer 1 (bottom) -->
+  <polygon points="49,82 67,44 85,82"/>
+  <!-- Layer 2 (middle) -->
+  <polygon points="52,68 67,36 82,68"/>
+  <!-- Layer 3 (top) -->
+  <polygon points="55,56 67,28 79,56"/>
+  <!-- Layer 4 (peak) -->
+  <polygon points="58,46 67,20 76,46"/>
+  <!-- Trunk -->
+  <rect x="64" y="82" width="6" height="10" rx="1"/>
+</svg>
