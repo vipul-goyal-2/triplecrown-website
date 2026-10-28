@@ -43,12 +43,16 @@
     .nav-links a { font-size: 15px; font-weight: 500; color: var(--dark); transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
 
-    .page-hero {
+    .contact-hero-wrap {
       max-width: 1200px;
       margin: 60px auto 0;
-      padding: 40px 60px 40px;
+      padding: 40px 60px 60px;
+      display: flex;
+      align-items: flex-start;
+      gap: 50px;
     }
-    .page-hero h1 {
+    .contact-hero-text { flex: 1; padding-top: 24px; }
+    .contact-hero-text h1 {
       font-family: var(--heading);
       font-size: 34px;
       font-weight: 300;
@@ -56,13 +60,14 @@
       margin-bottom: 14px;
       line-height: 1.2;
     }
-    .page-hero p { font-size: 15px; color: var(--dark); line-height: 1.7; max-width: 580px; }
+    .contact-hero-text p { font-size: 15px; color: var(--dark); line-height: 1.7; max-width: 420px; }
 
     .contact-content { max-width: 800px; margin: 0 auto; padding: 0 20px 60px; }
 
     .calendly-placeholder {
-      margin: 40px auto;
-      padding: 40px 20px;
+      flex: 1.3;
+      min-width: 360px;
+      padding: 32px 20px;
       text-align: center;
       background: var(--white);
       border: 1px solid rgba(11,17,32,0.08);
@@ -128,8 +133,11 @@
       .nav-logo span { font-size: 22px; }
       .nav-links { display: none; }
       .hamburger { display: block; }
-      .page-hero { padding: 30px 20px 30px; margin-top: 20px; }
-      .page-hero h1 { font-size: 28px; }
+      .contact-hero-wrap { flex-direction: column; padding: 30px 20px 30px; margin-top: 20px; gap: 30px; }
+      .contact-hero-text { padding-top: 0; }
+      .contact-hero-text h1 { font-size: 28px; }
+      .contact-hero-text p { max-width: 100%; }
+      .calendly-placeholder { min-width: 0; width: 100%; }
       .footer-inner { grid-template-columns: 1fr; gap: 24px; text-align: center; }
       .footer-right { text-align: center; }
     }
@@ -164,21 +172,18 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <section class="page-hero fade-up">
-    <h1>Contact us</h1>
-    <p>We'd love to hear from you. Schedule a call to discuss your needs, or reach out by email — we typically respond within one business day.</p>
+  <section class="contact-hero-wrap">
+    <div class="contact-hero-text fade-up">
+      <h1>Contact us</h1>
+      <p>We'd love to hear from you. Schedule a call to discuss your needs, or reach out by email — we typically respond within one business day.</p>
+    </div>
+    <div class="calendly-placeholder fade-up">
+      <p>Pick a time that works for you</p>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/hellotriplecrown/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+    </div>
   </section>
 
   <div class="contact-content">
-    <div class="calendly-placeholder fade-up">
-      <p>Pick a time that works for you</p>
-      <a href="contact.html" class="link-primary">Schedule a call with us →</a>
-      <!-- Calendly embed — uncomment when ready:
-      <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_LINK" style="min-width:320px;height:630px;"></div>
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      -->
-    </div>
-
     <div class="contact-info fade-up">
       <h2>Get in touch</h2>
       <div class="info-items">
@@ -236,5 +241,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
   </script>
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
